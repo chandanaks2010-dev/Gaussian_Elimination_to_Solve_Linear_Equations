@@ -1,0 +1,472 @@
+/* ═══════════════════════════════════════════════════════════════════════════
+   Global reset & base
+   ═══════════════════════════════════════════════════════════════════════════ */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+  background: #eef2f7;
+  color: #1e293b;
+  min-height: 100vh;
+  line-height: 1.5;
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   Page layout
+   ═══════════════════════════════════════════════════════════════════════════ */
+.page {
+  max-width: 980px;
+  margin: 0 auto;
+  padding: 2rem 1rem 4rem;
+}
+
+/* ─── Page header ─────────────────────────────────────────────────────────── */
+.page-header {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+.page-header h1 {
+  font-size: 2rem;
+  font-weight: 800;
+  color: #1d4ed8;
+  letter-spacing: -0.5px;
+}
+.page-header p {
+  margin-top: 0.45rem;
+  color: #64748b;
+  font-size: 0.95rem;
+}
+
+/* ─── Body ────────────────────────────────────────────────────────────────── */
+.page-body {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   Card
+   ═══════════════════════════════════════════════════════════════════════════ */
+.card {
+  background: #ffffff;
+  border-radius: 14px;
+  padding: 1.5rem;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.07);
+}
+.card h2 {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: #0f172a;
+  margin-bottom: 0.3rem;
+}
+.hint {
+  font-size: 0.83rem;
+  color: #64748b;
+  margin-bottom: 1rem;
+}
+.card-row {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-bottom: 0.25rem;
+  flex-wrap: wrap;
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   Size selector
+   ═══════════════════════════════════════════════════════════════════════════ */
+.size-strip {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+  margin-top: 0.75rem;
+}
+.size-btn {
+  padding: 0.45rem 1rem;
+  border: 2px solid #cbd5e1;
+  border-radius: 8px;
+  background: #f8fafc;
+  color: #334155;
+  font-size: 0.88rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: border-color 0.15s, background 0.15s, color 0.15s;
+}
+.size-btn:hover {
+  border-color: #1d4ed8;
+  color: #1d4ed8;
+}
+.size-btn.active {
+  border-color: #1d4ed8;
+  background: #1d4ed8;
+  color: #ffffff;
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   Matrix table
+   ═══════════════════════════════════════════════════════════════════════════ */
+.matrix-scroll {
+  overflow-x: auto;
+  padding-bottom: 0.5rem;
+  margin-bottom: 1.25rem;
+}
+.mtable {
+  border-collapse: separate;
+  border-spacing: 4px;
+}
+.mtable thead th {
+  font-size: 0.78rem;
+  color: #64748b;
+  font-weight: 600;
+  padding: 0 4px 6px;
+  text-align: center;
+}
+.th-label {
+  min-width: 36px;
+}
+.th-sep {
+  color: #94a3b8;
+  font-size: 1.1rem;
+  padding: 0 4px 6px;
+}
+.th-b {
+  color: #b91c1c !important;
+}
+.td-label {
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: #94a3b8;
+  text-align: right;
+  padding-right: 8px;
+  white-space: nowrap;
+}
+.td-a input,
+.td-b input {
+  width: 74px;
+  height: 42px;
+  border: 2px solid #e2e8f0;
+  border-radius: 7px;
+  background: #f8fafc;
+  font-size: 0.95rem;
+  text-align: center;
+  outline: none;
+  transition: border-color 0.15s, background 0.15s;
+  /* Chrome number input: hide arrows */
+  -moz-appearance: textfield;
+}
+.td-a input::-webkit-outer-spin-button,
+.td-a input::-webkit-inner-spin-button,
+.td-b input::-webkit-outer-spin-button,
+.td-b input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+}
+.td-a input:focus {
+  border-color: #1d4ed8;
+  background: #eff6ff;
+}
+.td-b input {
+  border-color: #fca5a5;
+  background: #fff1f1;
+  color: #b91c1c;
+  font-weight: 600;
+}
+.td-b input:focus {
+  border-color: #dc2626;
+  background: #fee2e2;
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   Buttons
+   ═══════════════════════════════════════════════════════════════════════════ */
+.action-row {
+  display: flex;
+  gap: 0.75rem;
+  align-items: center;
+  flex-wrap: wrap;
+}
+.btn-solve {
+  padding: 0.65rem 2.25rem;
+  background: #1d4ed8;
+  color: #ffffff;
+  border: none;
+  border-radius: 9px;
+  font-size: 1rem;
+  font-weight: 700;
+  cursor: pointer;
+  letter-spacing: 0.3px;
+  transition: background 0.15s, transform 0.1s;
+}
+.btn-solve:hover:not(:disabled) {
+  background: #1e40af;
+  transform: translateY(-1px);
+}
+.btn-solve:active:not(:disabled) {
+  transform: translateY(0);
+}
+.btn-solve:disabled {
+  background: #93c5fd;
+  cursor: not-allowed;
+}
+.btn-reset {
+  padding: 0.65rem 1.5rem;
+  background: #ffffff;
+  color: #475569;
+  border: 2px solid #cbd5e1;
+  border-radius: 9px;
+  font-size: 0.95rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: border-color 0.15s;
+}
+.btn-reset:hover {
+  border-color: #64748b;
+}
+.btn-ghost {
+  background: none;
+  border: none;
+  color: #1d4ed8;
+  font-size: 0.85rem;
+  cursor: pointer;
+  text-decoration: underline;
+  white-space: nowrap;
+  padding: 4px 0;
+  align-self: flex-start;
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   Error
+   ═══════════════════════════════════════════════════════════════════════════ */
+.error-box {
+  background: #fef2f2;
+  border: 1.5px solid #fca5a5;
+  border-radius: 10px;
+  padding: 0.9rem 1.1rem;
+  color: #dc2626;
+  font-size: 0.9rem;
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   Solution section
+   ═══════════════════════════════════════════════════════════════════════════ */
+.solution-section {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+/* ─── Final answer ────────────────────────────────────────────────────────── */
+.final-answer {
+  background: #f0fdf4;
+  border: 2px solid #86efac;
+  border-radius: 14px;
+  padding: 1.5rem;
+}
+.final-answer h2 {
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: #15803d;
+  margin-bottom: 1rem;
+}
+.answer-grid {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+.answer-item {
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+  background: #ffffff;
+  border: 1.5px solid #86efac;
+  border-radius: 9px;
+  padding: 0.55rem 1.1rem;
+}
+.av {
+  font-weight: 800;
+  color: #15803d;
+  font-size: 1rem;
+  font-family: 'Courier New', monospace;
+}
+.aeq {
+  color: #94a3b8;
+  font-size: 1rem;
+}
+.aval {
+  font-weight: 700;
+  color: #0f172a;
+  font-size: 1.1rem;
+  font-family: 'Courier New', monospace;
+}
+
+/* ─── Steps block ─────────────────────────────────────────────────────────── */
+.steps-block {
+  background: #ffffff;
+  border-radius: 14px;
+  padding: 1.5rem;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.07);
+}
+.steps-block h2 {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: #0f172a;
+  margin-bottom: 1rem;
+}
+
+/* ─── Individual step card ────────────────────────────────────────────────── */
+.step-card {
+  border-left: 4px solid #e2e8f0;
+  background: #f8fafc;
+  border-radius: 0 10px 10px 0;
+  padding: 0.85rem 1rem;
+  margin-bottom: 0.85rem;
+}
+.sc-initial       { border-color: #94a3b8; }
+.sc-pivot         { border-color: #f59e0b; background: #fffbeb; }
+.sc-elimination   { border-color: #3b82f6; background: #eff6ff; }
+.sc-upper_triangular { border-color: #8b5cf6; background: #faf5ff; }
+.sc-back_substitution { border-color: #10b981; background: #f0fdf4; }
+
+.step-head {
+  display: flex;
+  align-items: center;
+  gap: 0.7rem;
+  flex-wrap: wrap;
+  margin-bottom: 0.65rem;
+}
+.badge {
+  display: inline-block;
+  font-size: 0.68rem;
+  font-weight: 800;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  padding: 3px 9px;
+  border-radius: 99px;
+  white-space: nowrap;
+}
+.b-initial            { background: #e2e8f0; color: #475569; }
+.b-pivot              { background: #fef3c7; color: #92400e; }
+.b-elimination        { background: #dbeafe; color: #1e40af; }
+.b-upper_triangular   { background: #ede9fe; color: #5b21b6; }
+.b-back_substitution  { background: #d1fae5; color: #065f46; }
+
+.step-desc {
+  font-size: 0.88rem;
+  font-family: 'Courier New', monospace;
+  color: #1e293b;
+  word-break: break-word;
+}
+
+/* ─── Step matrix view ────────────────────────────────────────────────────── */
+.matrix-view {
+  overflow-x: auto;
+  margin-top: 0.5rem;
+}
+.matrix-view table {
+  border-collapse: collapse;
+  font-size: 0.83rem;
+  font-family: 'Courier New', monospace;
+}
+.matrix-view th,
+.matrix-view td {
+  border: 1px solid #e2e8f0;
+  padding: 5px 12px;
+  text-align: center;
+  min-width: 58px;
+}
+.matrix-view thead th {
+  background: #f1f5f9;
+  color: #64748b;
+  font-size: 0.73rem;
+}
+.mv-bh { color: #b91c1c !important; background: #fff1f1 !important; }
+.mv-bv { background: #fff1f1; color: #b91c1c; font-weight: 700; }
+
+/* ─── Pivot cell highlight ────────────────────────────────────────────────── */
+/* The active pivot element (diagonal position during elimination) */
+.mv-pivot-cell {
+  background: #fef08a !important;
+  color: #854d0e !important;
+  font-weight: 800 !important;
+  outline: 2px solid #eab308;
+  outline-offset: -2px;
+}
+
+/* ─── Row highlights ──────────────────────────────────────────────────────── */
+/* Pivot row — the source row used for elimination */
+.mv-row-pivot td {
+  background: #fef9c3;
+}
+/* Override b-column highlight inside pivot row */
+.mv-row-pivot td.mv-bv {
+  background: #fde68a;
+  color: #92400e;
+}
+
+/* Active row — the row currently being modified */
+.mv-row-active td {
+  background: #dbeafe;
+}
+.mv-row-active td.mv-bv {
+  background: #bfdbfe;
+  color: #1e40af;
+}
+
+/* ─── Warning step card ───────────────────────────────────────────────────── */
+.sc-warning { border-color: #f97316; background: #fff7ed; }
+.b-warning  { background: #ffedd5; color: #c2410c; }
+
+/* ─── Back substitution rows ──────────────────────────────────────────────── */
+.bs-list {
+  margin-top: 0.6rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+.bs-row {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  background: #ffffff;
+  border: 1px solid #a7f3d0;
+  border-radius: 7px;
+  padding: 0.45rem 0.85rem;
+}
+.bs-var {
+  font-weight: 800;
+  color: #065f46;
+  font-family: 'Courier New', monospace;
+  font-size: 0.95rem;
+}
+.bs-eq { color: #94a3b8; }
+.bs-val {
+  font-weight: 700;
+  font-family: 'Courier New', monospace;
+  color: #0f172a;
+  font-size: 0.95rem;
+}
+.bs-formula {
+  font-size: 0.78rem;
+  color: #64748b;
+  background: #f1f5f9;
+  padding: 2px 8px;
+  border-radius: 5px;
+  font-family: 'Courier New', monospace;
+  word-break: break-all;
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   Responsive tweaks
+   ═══════════════════════════════════════════════════════════════════════════ */
+@media (max-width: 600px) {
+  .page-header h1 { font-size: 1.5rem; }
+  .td-a input, .td-b input { width: 60px; height: 38px; font-size: 0.87rem; }
+  .answer-grid { gap: 0.6rem; }
+}
