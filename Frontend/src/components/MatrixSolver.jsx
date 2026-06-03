@@ -79,7 +79,7 @@ export default function MatrixSolver() {
   const handleCell = useCallback((row, col, val) => {
     setMatrix((prev) => {
       const next = prev.map((r) => [...r])
-      next[row][col] = val
+      next[row][col] = val === '' ? '0' : val
       return next
     })
   }, [])
@@ -109,8 +109,8 @@ export default function MatrixSolver() {
       const row = []
       for (let j = 0; j <= size; j++) {
         const raw = matrix[i]?.[j] ?? ''
-        const num = parseFloat(raw)
-        if (raw === '' || isNaN(num)) {
+        const num = raw=== '' ? 0 : parseFloat(raw)
+        if (isNaN(num)) {
           setError(
             `Row ${i + 1}, column ${j + 1} is empty or invalid. Fill in all cells before solving.`,
           )

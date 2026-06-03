@@ -68,6 +68,34 @@ def root():
     return {"status": "ok", "message": "Gaussian Elimination Solver API is running."}
 
 
+@app.get("/test", tags=["health"])
+def test_endpoint():
+    """
+    Quick test endpoint — solves a simple identity matrix.
+    If this returns [2, 3, 4], the solver is working correctly.
+    """
+    try:
+        test_matrix = [
+            [1, 0, 0, 2],
+            [0, 1, 0, 3],
+            [0, 0, 1, 4],
+        ]
+        result = gaussian_elimination(test_matrix)
+        return {
+            "status": "ok",
+            "message": "Test passed — solver is working correctly",
+            "test_input": test_matrix,
+            "expected_solution": [2, 3, 4],
+            "actual_solution": result["solution"],
+            "match": result["solution"] == [2.0, 3.0, 4.0],
+        }
+    except Exception as exc:
+        return {
+            "status": "error",
+            "message": str(exc),
+        }
+
+
 @app.post("/solve", tags=["solver"])
 def solve(request: SolveRequest):
     """
