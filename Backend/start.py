@@ -47,7 +47,7 @@ def main() -> None:
             sys.executable, "-m", "uvicorn",
             "main:app",
             "--reload",
-            "--reload-exclude", str(BACKEND_DIR / ".venv"),
+            "--reload-exclude", ".venv",
             "--port", "8000",
         ],
         cwd=str(BACKEND_DIR),
