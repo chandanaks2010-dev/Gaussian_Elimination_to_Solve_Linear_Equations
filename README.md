@@ -353,7 +353,44 @@ Frontend/
 | Node.js | 18+ | Frontend build tool |
 | npm | 9+ | JavaScript package manager |
 
-### First-time setup
+### Quick Start (Fresh Clone from Git)
+
+Follow these steps to get the application running on your local machine:
+
+#### Step 1: Clone the repository
+```powershell
+git clone <repository-url>
+cd Gaussian_Elimination_to_Solve_Linear_Equations
+```
+
+#### Step 2: Install backend dependencies
+```powershell
+cd Backend
+pip install -r requirements.txt
+```
+
+#### Step 3: Install frontend dependencies
+```powershell
+cd ../Frontend
+npm install
+```
+
+#### Step 4: Start the application
+```powershell
+cd ../Backend
+python start.py
+```
+
+The application will now be running:
+- **Frontend:** http://localhost:3000
+- **Backend API:** http://127.0.0.1:8000
+- **API Documentation:** http://127.0.0.1:8000/docs
+
+Press **Ctrl+C** to stop both servers.
+
+---
+
+### First-time setup (alternative: manual environment setup)
 
 ```powershell
 # Backend — create virtual environment and install dependencies
@@ -372,7 +409,7 @@ npm install
 
 ```powershell
 cd Backend
-.venv\Scripts\python.exe start.py
+python start.py
 ```
 
 This launcher script:
