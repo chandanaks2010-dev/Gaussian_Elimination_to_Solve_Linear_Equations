@@ -305,6 +305,21 @@ body {
   font-family: 'Courier New', monospace;
 }
 
+/* ─── Solution chart ──────────────────────────────────────────────────────── */
+.chart-wrap {
+  background: #ffffff;
+  border-radius: 14px;
+  padding: 1.25rem 1.5rem 1rem;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.07);
+  overflow-x: auto;
+}
+.chart-title {
+  font-size: 1rem;
+  font-weight: 700;
+  color: #0f172a;
+  margin-bottom: 0.75rem;
+}
+
 /* ─── Steps block ─────────────────────────────────────────────────────────── */
 .steps-block {
   background: #ffffff;
